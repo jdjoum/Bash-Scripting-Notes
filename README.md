@@ -1,7 +1,7 @@
 # Bash-Scripting-Notes
 This repository contains notes and example scripts based on what I learned from the Free Code Camp [Bash Scripting Tutorial for Beginners](https://www.youtube.com/watch?v=tK9Oc6AEnR4&t=725s). It covers essential Bash scripting concepts, commands, and practical examples.
 
-## Basic Bash Commands
+## Basic Bash/Linux/Unix Commands
 - ls - Lists directory contents
 - cd - Changes the current directory
 - pwd - Prints the working directory
@@ -38,6 +38,23 @@ This repository contains notes and example scripts based on what I learned from 
   cat file1.txt file2.txt
   ```
   This will display the contents of both file1.txt and file2.txt sequentially.
+
+- #! (shebang or hashbang) - Used at the very beginning of a script to indicate which interpreter should be used to execute the script. The shebang is followed by the path to the interpreter.
+
+  Example:
+  ```
+  #!/bin/bash
+  ```
+
+  This line tells the operating system to use the Bash shell (/bin/bash) to execute the script.
+
+- ./ - Used to run a script or executable file located in the current directory.
+
+  Example:
+  ```
+  ./script.sh
+  ```
+  
 ## Basic Vim Commands
 - Opening a file:
   ```

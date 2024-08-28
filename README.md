@@ -1,5 +1,5 @@
 # Bash-Scripting-Notes
-This repository contains notes and example scripts based on what I learned from the Free Code Camp [Bash Scripting Tutorial for Beginners](https://www.youtube.com/watch?v=tK9Oc6AEnR4&t=725s). It covers essential Bash scripting concepts, commands, and practical examples.
+This repository contains notes and example scripts based on what I learned from the Free Code Camp [Bash Scripting Tutorial for Beginners](https://www.youtube.com/watch?v=tK9Oc6AEnR4&t). It covers essential Bash scripting concepts, commands, and practical examples.
 
 ## Basic Bash/Linux/Unix Commands
 - `ls` - Lists directory contents

@@ -109,6 +109,161 @@ This repository contains notes and example scripts based on what I learned from 
 
   - `chmod 755 file.sh` : Sets read, write, and execute permissions for the owner (7), and read and execute permissions for the group and others (5).
   - `chmod 644 file.sh` : Sets read and write permissions for the owner (6), and read-only permissions for the group and others (4).
+
+- `cp (copy)` - Used to copy files and directories from one location to another.
+
+  <ins>Basic Syntax</ins>
+
+  ```
+  cp [options] source destination
+  ```
+  - `source` : The file or directory you want to copy.
+  - `destination` : The location where you want to copy the file or directory.
+
+  <ins>Common Options</ins>
+
+  - `-r` or `-R` : Recursively copy directories and their contents, no matter how deeply nested the subdirectories are.
+  - `-i` : Prompt before overwriting files.
+  - `-v` : Verbose mode, showing files as they are copied.
+  - `-u` : Only copy files that are newer than the destination file or that don't exist at the destination.
+  - `-n` : Do not overwrite existing files.
+
+  Examples:
+
+  1. Copy a single file:
+
+  ```
+  cp file.txt /path/to/destination/
+  ```
+  This copies file.txt to the specified destination directory.
+
+  2. Copy multiple files:
+
+  ```
+  cp file1.txt file2.txt /path/to/destination/
+  ```
+  This copies both file1.txt and file2.txt to the destination.
+
+  3. Copy a directory and its contents:
+
+  ```
+  cp -r /path/to/source_directory /path/to/destination_directory
+  ```
+  This recursively copies source_directory and all its contents to destination_directory.
+
+  4. Copy with a prompt before overwriting:
+  ```
+  cp -i file.txt /path/to/destination/
+  ```
+  This prompts you to confirm before overwriting a file at the destination.
+
+  5. Copy with verbose output:
+  ```
+  cp -v file.txt /path/to/destination/
+  ```
+  This shows the file names as they are being copied.
+
+- `read` - Used to read a line of input from the user or from a file and assign it to a variable.
+
+  Example:
+
+  ```
+  echo "Please enter your name:"
+  read name
+  echo "Hello, $name!"
+  ```
+
+  <ins>Additional Options</ins>
+
+  - `-p` : Prompt the user with a message.
+  ```
+  read -p "Enter your age: " age
+  echo "You are $age years old."
+  ```
+  - `-s` : Read input silently (e.g., for passwords).
+  ```
+  read -s -p "Enter your password: " password
+  echo "Password entered."
+  ```
+  - `-a` : Store input in an array.
+  ```
+  read -a colors
+  echo "First color: ${colors[0]}"
+  ```
+
+  - `-n` : Read a specified number of characters.
+  ```
+  read -n 1 -p "Press any key to continue..."
+  ```
+
+  - `-t` : Set a timeout for input.
+  ```
+  read -t 5 -p "Enter your name within 5 seconds: " name
+  ```
+  - `-r` : Prevent backslashes from being interpreted as escape characters.
+  ```
+  read -r name
+  ```
+
+  Example: Reading from a File
+
+  Suppose you have a file named names.txt with the following content:
+  ```
+  Alice
+  Bob
+  Charlie
+  ```
+
+  You can use the read command in a Bash script to read each line of this file and process it. Here's how:
+  ```
+  #!/bin/bash
+  
+  # Open the file for reading
+  while IFS= read -r line; do
+      echo "Hello, $line!"
+  done < names.txt
+  ```
+
+  Output
+
+  When you run this script, the output will be:
+  ```
+  Hello, Alice!
+  Hello, Bob!
+  Hello, Charlie!
+  ```
+  This script reads each line of names.txt and processes it one by one.
+
+## Bash Variables
+  <ins>Declaring Variables</ins>
+
+  Examples:
+  ```
+  NAME=Julian
+  GREETING="Hello World!"
+  AGE=25
+  CURRENT_DATE=$(date)
+  ```
+
+  <ins>Accessing a Variable</ins>
+
+  To use the value stored in a variable, you need to prefix the variable name with a $:
+  ```
+  echo $GREETING
+  ```
+  This will output:
+  ```
+  Hello World!
+  ```
+
+  <ins>Modifying Variables</ins>
+
+  You can modify vairbales by reassigning values:
+  ```
+  AGE=25
+  AGE=$((AGE + 1))
+  echo $AGE # Outputs 26
+  ```
   
 ## Basic Vim Commands
 - Opening a file:

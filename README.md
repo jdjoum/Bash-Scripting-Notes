@@ -264,6 +264,45 @@ This repository contains notes and example scripts based on what I learned from 
   AGE=$((AGE + 1))
   echo $AGE # Outputs 26
   ```
+
+## Bash Positional Arguments
+  In Bash scripting, positional arguments are used to pass parameters or arguments to a script. These arguments are accessed within the script using special variables. Here’s how they work:
+  
+  - `$0` : The name of the script itself.
+  - `$1`, `$2`, `$3`, ..., `$n` : The first, second, third, ..., nth arguments passed to the script.
+  - `$#` : The total number of arguments passed to the script.
+  - `$@` : All the arguments passed to the script, each as a separate word.
+  - `$*` : All the arguments passed to the script as a single word.
+
+  <ins>Example Script</ins>
+  ```
+  #!/bin/bash
+
+  echo "Script Name: $0"
+  echo "First argument: $1"
+  echo "Second argument: $2"
+  echo "All arguments (\$@): $@"
+  echo "All arguments as a single string (\$*): $*"
+  echo "Number of arguments: $#"
+  ```
+
+  <ins>Usage</ins>\
+  If you save the script as example.sh and run it like this:
+  ```
+  ./example.sh arg1 arg2 arg3
+  ```
+
+  The output will be:
+  ```
+  Script Name: ./example.sh
+  First argument: arg1
+  Second argument: arg2
+  All arguments ($@): arg1 arg2 arg3
+  All arguments as a single string ($*): arg1 arg2 arg3
+  Number of arguments: 3
+  ```
+
+  Positional arguments allow you to create flexible and dynamic scripts that can handle different inputs.
   
 ## Basic Vim Commands
 - Opening a file:

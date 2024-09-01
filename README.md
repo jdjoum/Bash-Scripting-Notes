@@ -234,6 +234,69 @@ This repository contains notes and example scripts based on what I learned from 
   ```
   This script reads each line of names.txt and processes it one by one.
 
+- `grep` - Used for searching text within files or the output of other commands. It searches for lines that contain a specified pattern and displays those lines.
+
+  <ins>Basic Syntax</ins>
+  ```
+  grep [options] pattern [file...]
+  ```
+
+  - `pattern` : The string or regular expression you're searching for.
+  - `file` : The file or files in which to search. If no file is specified, grep searches the input provided via a pipe or standard input.
+
+  <ins>Common Use Cases</ins>
+  1. Search for a Simple String in a File:
+  ```
+  grep "hello" file.txt
+  ```
+  This searches for lines containing the string "hello" in file.txt and prints those lines.
+
+  2. Search Across Multiple Files:
+  ```
+  grep "error" *.log
+  ```
+  This searches for the string "error" in all .log files in the current directory.
+
+  3. Case-Insensitive Search
+  ```
+  grep -i "hello" file.txt
+  ```
+  The `-i` option makes the search case-insensitive, so it will match "hello", "Hello", "HELLO", etc.
+
+  4. Display Line Numbers:
+  ```
+  grep -n "hello" file.txt
+  ```
+  The `-n` option displays the line numbers alongside the matching lines.
+
+  5. Search for a Whole Word:
+  ```
+  grep -w "hello" file.txt
+  ```
+  The `-w` option ensures that only whole words matching "hello" are returned, so "hello" would match, but "helloworld" would not.
+
+  6. Search Recursively in a Directory:
+  ```
+  grep -r "hello" /path/to/directory
+  ```
+  The `-r` option allows grep to search recursively through all files in the specified directory.
+
+  <ins>Example in Piping</ins>
+
+  You can use `grep` to filter the output of another command:
+  ```
+  ps aux | grep "bash"
+  ```
+  This command lists all running processes (`ps aux`) and then filters the output to show only those containing "bash".
+
+  <ins>Regular Expressions</ins>
+  
+  `grep` can also use regular expressions for more complex searches:
+  ```
+  grep "^hello" file.txt
+  ```
+  This matches lines in `file.txt` that start with "hello".
+
 ## Bash Variables
   <ins>Declaring Variables</ins>
 
@@ -303,6 +366,38 @@ This repository contains notes and example scripts based on what I learned from 
   ```
 
   Positional arguments allow you to create flexible and dynamic scripts that can handle different inputs.
+
+## Piping in Bash
+  Piping in Bash is a powerful feature that allows you to take the output of one command and use it as the input to another command. This is done using the pipe operator (`|`).
+
+  <ins>Basic Example</ins>
+  ```
+  command1 | command2
+  ```
+
+  - `command1` is executed first, and its output is passed directly as input to `command2`.
+  - `command2` then processes the input it receives from `command1`.
+
+  <ins>Practical Example</ins>\
+  Suppose you want to list all files in a directory and then search for files with a specific word in their names:
+  ```
+  ls | grep "word"
+  ```
+
+  - `ls` lists all files in the current directory.
+  - `grep "word"` filters the list, showing only the files that contain "word" in their names.
+
+  <ins>Chaining Multiple Commands</ins>\
+  You can chain multiple commands together:
+  ```
+  cat file.txt | grep "pattern" | sort
+  ```
+
+  - `cat file.txt` outputs the content of file.txt.
+  - `grep "pattern"` filters lines containing "pattern".
+  - `sort` sorts the filtered lines.
+
+  Piping is essential for combining commands in Bash to create more complex and powerful workflows.
   
 ## Basic Vim Commands
 - Opening a file:

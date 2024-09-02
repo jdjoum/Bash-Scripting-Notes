@@ -290,7 +290,7 @@ This repository contains notes and example scripts based on what I learned from 
   This command lists all running processes (`ps aux`) and then filters the output to show only those containing "bash".
 
   <ins>Regular Expressions</ins>
-  
+
   `grep` can also use regular expressions for more complex searches:
   ```
   grep "^hello" file.txt
@@ -398,6 +398,60 @@ This repository contains notes and example scripts based on what I learned from 
   - `sort` sorts the filtered lines.
 
   Piping is essential for combining commands in Bash to create more complex and powerful workflows.
+
+## Bash Output/Input Redirection
+  Output redirection in Bash is a feature that allows you to control where the output of a command goes. Instead of displaying the output on the screen (standard output), you can redirect it to a file, another command, or even nowhere at all. Here are some common ways to use output redirection:
+
+  1. Redirect Standard Output to a File
+  ```
+  command > file.txt
+  ```
+  This will redirect the output of `command` to `file.txt`. If `file.txt` already exists, it will be overwritten.
+
+  2. Append Standard Output to a File
+  ```
+  command >> file.txt
+  ```
+  This appends the output of `command` to the end of `file.txt` without overwriting the existing content.
+
+  3. Redirect Standard Error to a File
+  ```
+  command 2> error.txt
+  ```
+  This redirects the error messages (standard error) of `command` to `error.txt`.
+
+  4. Redirect Both Standard Output and Standard Error to a File
+  ```
+  command > output.txt 2>&1
+  ```
+  This sends both standard output and standard error to `output.txt`.
+
+  5. Redirect Output to /dev/null (Discard Output)
+  ```
+  command > /dev/null 2>&1
+  ```
+  This discards all output from the command, effectively silencing it.
+
+  6. Redirect Input from a File
+  ```
+  command < input.txt
+  ```
+  This uses `input.txt` as the input for `command`.
+
+  7. Combine Input and Output Redirection
+  ```
+  command < input.txt > output.txt
+  ```
+  This takes input from `input.txt` and sends output to `output.txt`.
+
+  These are the basic techniques for output redirection in Bash. They can be combined and used in more complex scripts to manage input and output effectively.
+
+  In Bash, `2>` and `2>&1` are used for redirecting standard error (stderr).
+
+  <ins>How They Work Together</ins>
+
+  - `2>` by itself directs stderr to a file or location you specify.
+  - `2>&1` combines stderr with stdout, meaning both types of output will go to the same place, whether it's a file or another command.
   
 ## Basic Vim Commands
 - Opening a file:

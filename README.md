@@ -297,6 +297,28 @@ This repository contains notes and example scripts based on what I learned from 
   ```
   This matches lines in `file.txt` that start with "hello".
 
+- `$?` - A special variable that holds the exit status of the most recently executed command. It's a valuable tool for checking if commands completed successfully or encountered errors.
+
+  Exit Status Values:
+
+  - 0: The command executed successfully.
+  - 1: A generic error occurred.
+  - 2-127: Specific error codes defined by the command itself.
+  - 127: The command was not found.
+  - 128+: The command terminated due to a signal.
+
+  Example Usage:
+  ```
+  # Check if a command executed successfully
+  if [ $? -eq 0 ]; then
+    echo "Command executed successfully"
+  else
+    echo "Command encountered an error"
+  fi
+  ```
+
+  By understanding and utilizing $?, you can write more robust and informative Bash scripts that handle errors gracefully and provide appropriate feedback to the user.
+
 ## Bash Variables
   <ins>Declaring Variables</ins>
 
@@ -452,6 +474,75 @@ This repository contains notes and example scripts based on what I learned from 
 
   - `2>` by itself directs stderr to a file or location you specify.
   - `2>&1` combines stderr with stdout, meaning both types of output will go to the same place, whether it's a file or another command.
+
+## Test Operators in Bash
+  Bash provides a powerful set of test operators to evaluate conditions and make decisions within your scripts. These operators allow you to compare values, check file attributes, and perform logical operations.
+
+  <ins>Basic Comparison Operators</ins>
+
+  - Equality:
+    - `=` : Equal to (e.g., `if [ "$a" = "$b" ]; then...`)
+    - `!=` : Not equal to (e.g., `if [ "$a" != "$b" ]; then...`)
+  - Numerical Comparison:
+    - `-eq` : Equal to numerically (e.g., `if [ "$a" -eq "$b" ]; then...`)
+    - `-ne` : Not equal to numerically (e.g., `if [ "$a" -ne "$b" ]; then...`)
+    - `-lt` : Less than numerically (e.g., `if [ "$a" -lt "$b" ]; then...`)
+    - `-le` : Less than or equal to numerically (e.g., `if [ "$a" -le "$b" ]; then...`)
+    - `-gt` : Greater than numerically (e.g., `if [ "$a" -gt "$b" ]; then...`)
+    - `-ge` : Greater than or equal to numerically (e.g., `if [ "$a" -ge "$b" ]; then...`)
+  - String Comparison:
+    - `-eq` : Equal to (same as `=` for strings)
+    - `-ne` : Not equal to (same as `!=` for strings)
+    - `-lt` : Less than alphabetically (e.g., `if [ "$a" -lt "$b" ]; then...`)
+    - `-le` : Less than or equal to alphabetically (e.g., `if [ "$a" -le "$b" ]; then...`)
+    - `-gt` : Greater than alphabetically (e.g., `if [ "$a" -gt "$b" ]; then...`)
+    - `-ge` : Greater than or equal to alphabetically (e.g., `if [ "$a" -ge "$b" ]; then...`)
+
+  <ins>File Test Operators</ins>
+
+  - File Existence:
+    - `-e` : File exists (e.g., `if [ -e "$file" ]; then...`)
+  - File Type:
+    - `-f` : Regular file (e.g., `if [ -f "$file" ]; then...`)
+    - `-d` : Directory (e.g., `if [ -d "$dir" ]; then...`)
+    - `-l` : Symbolic link (e.g., `if [ -l "$link" ]; then...`)
+    - `-p` : Named pipe (e.g., `if [ -p "$pipe" ]; then...`)
+    - `-S` : Socket (e.g., `if [ -S "$socket" ]; then...`)
+  - File Permissions: 
+    - `-r` : Readable (e.g., `if [ -r "$file" ]; then...`)
+    - `-w` : Writable (e.g., `if [ -w "$file" ]; then...`)
+    - `-x` : Executable (e.g., `if [ -x "$file" ]; then...`)
+  - File Attributes:
+    `-s` : Non-zero size (e.g., `if [ -s "$file" ]; then...`)
+    `-t` : Associated with a terminal (e.g., `if [ -t 1 ]; then...`)
+  
+  <ins>Logical Operators</ins>
+
+  - And: `&&` (e.g., `if [ -f "$file" ] && [ -r "$file" ]; then...`)
+  - Or: `||` (e.g., `if [ -f "$file" ] || [ -d "$dir" ]; then...`)
+  - Not: `!` (e.g., `if ! [ -e "$file" ]; then...`)
+
+  <ins>Example Usage</ins>
+
+  ```
+  if [ "$user" = "root" ]; then
+    echo "You are the root user."
+  fi
+
+  if [ "$num" -gt 10 ]; then
+      echo "$num is greater than 10."
+  fi
+
+  if [ -f "$file" ]; then
+      echo "$file is a regular file."
+  fi
+
+  if [ -r "$file" ] && [ -w "$file" ]; then
+      echo "$file is readable and writable."
+  fi
+  ```
+
+  By effectively using these test operators, you can create powerful and flexible Bash scripts to automate tasks and make informed decisions based on various conditions.
   
 ## Basic Vim Commands
 - Opening a file:

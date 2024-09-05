@@ -319,6 +319,23 @@ This repository contains notes and example scripts based on what I learned from 
 
   By understanding and utilizing $?, you can write more robust and informative Bash scripts that handle errors gracefully and provide appropriate feedback to the user.
 
+- `${1,,}` - Used for lowercasing the value of the first positional parameter ($1). Here's a breakdown:
+  
+  - `$1` refers to the first argument passed to the script or function.
+  - `,,` is a parameter expansion operator that converts the value to lowercase.
+
+  Example:
+
+  ```
+  #!/bin/bash
+  echo "${1,,}"
+  ```
+
+  If you run this script with the argument "HELLO", it will output:
+  ```
+  hello
+  ```
+
 ## Bash Variables
   <ins>Declaring Variables</ins>
 
@@ -543,7 +560,76 @@ This repository contains notes and example scripts based on what I learned from 
   ```
 
   By effectively using these test operators, you can create powerful and flexible Bash scripts to automate tasks and make informed decisions based on various conditions.
-  
+
+## Conditionals in Bash
+  In Bash scripting, conditionals are used to execute different commands based on certain conditions. The most common conditional statements are `if`, `else`, `elif`, and case. Here's a quick overview:
+
+  1. If-Else Statements
+
+  These are used to test conditions and execute commands accordingly.
+  ```
+  if [ condition ]; then
+    # Commands to execute if the condition is true
+  elif [ another_condition ]; then
+    # Commands to execute if the second condition is true
+  else
+    # Commands to execute if none of the conditions are true
+  fi
+  ```
+  - `[ condition ]` checks a condition (like comparing numbers, strings, or checking file existence).
+  - `then` follows the condition, and the commands to execute if it's true are placed beneath.
+  - `elif` is used for additional conditions.
+  - `else` is the fallback if none of the conditions are true.
+
+  Example:
+  ```
+  #!/bin/bash
+  x=10
+
+  if [ $x -gt 5 ]; then
+    echo "x is greater than 5"
+  elif [ $x -eq 5 ]; then
+    echo "x equals 5"
+  else
+    echo "x is less than 5"
+  fi
+  ```
+
+  2. Case Statement
+
+  This is similar to switch in other programming languages, used for matching one value against multiple patterns.
+  ```
+  case expression in
+    pattern1)
+      # Commands for pattern1
+      ;;
+    pattern2)
+      # Commands for pattern2
+      ;;
+    *)
+      # Default commands if no pattern matches
+      ;;
+  esac
+  ```
+  Example:
+  ```
+  #!/bin/bash
+  fruit="apple"
+
+  case $fruit in
+    "apple")
+      echo "You selected apple"
+      ;;
+    "banana")
+      echo "You selected banana"
+      ;;
+    *)
+      echo "Unknown fruit"
+      ;;
+  esac
+  ```
+  In Bash, `esac` is used to close a `case` statement. It is simply "case" spelled backward, and it marks the end of the case block. Just like `fi` is used to close an `if` statement, `esac` is required to indicate the end of the `case` logic.
+
 ## Basic Vim Commands
 - Opening a file:
   ```

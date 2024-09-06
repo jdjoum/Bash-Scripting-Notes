@@ -630,6 +630,79 @@ This repository contains notes and example scripts based on what I learned from 
   ```
   In Bash, `esac` is used to close a `case` statement. It is simply "case" spelled backward, and it marks the end of the case block. Just like `fi` is used to close an `if` statement, `esac` is required to indicate the end of the `case` logic.
 
+## Arrays and For Loops in Bash
+  In Bash, arrays are a type of data structure that can store multiple values. Bash supports both indexed arrays and associative arrays.
+
+  <ins>Indexed Arrays</ins>
+
+  Indexed arrays are like standard arrays in other languages, where elements are accessed by their index.
+
+  Creating an Indexed Array
+  ```
+  # Method 1: Declare and assign values
+  my_array=(apple banana cherry)
+
+  # Method 2: Declare and add elements later
+  declare -a my_array
+  my_array[0]="apple"
+  my_array[1]="banana"
+  my_array[2]="cherry"
+  ```
+
+  Accessing Elements
+  ```
+  echo ${my_array[0]}  # Output: apple
+  ```
+
+  Accessing All Elements
+  ```
+  echo ${my_array[@]}  # Output: apple banana cherry
+  ```
+
+  Length of Array
+  ```
+  echo ${#my_array[@]}  # Output: 3
+  ```
+
+  <ins>Associative Arrays</ins>
+
+  Associative arrays allow you to use strings as keys.
+
+  Creating an Associative Array
+  ```
+  declare -A fruits
+  fruits[apple]="red"
+  fruits[banana]="yellow"
+  ```
+
+  Accessing Elements
+  ```
+  echo ${fruits[apple]}  # Output: red
+  ```
+
+  Accessing All Keys
+  ```
+  echo ${!fruits[@]}  # Output: apple banana
+  ```
+
+  Accessing All Values
+  ```
+  echo ${fruits[@]}  # Output: red yellow
+  ```
+
+  Looping Through Arrays
+  ```
+  # Indexed array
+  for element in "${my_array[@]}"; do
+      echo $element
+  done
+
+  # Associative array
+  for key in "${!fruits[@]}"; do
+      echo "$key is ${fruits[$key]}"
+  done
+  ```
+
 ## Basic Vim Commands
 - Opening a file:
   ```

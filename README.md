@@ -703,6 +703,88 @@ This repository contains notes and example scripts based on what I learned from 
   done
   ```
 
+## Functions in Bash
+  In Bash, a function is a reusable block of code that can be executed multiple times within a script. Functions allow you to break down complex scripts into simpler, manageable parts.
+
+  Basic Syntax of a Bash Function:
+  ```
+  function_name(){
+    # Code to execute
+  }
+  ```
+
+  Example:
+  ```
+  greet() {
+    echo "Hello, $1!"
+  }
+
+  # Calling the function with an argument
+  greet "John"
+  ```
+  In this example, the function `greet` takes one argument (`$1`) and prints a greeting message.
+
+  Key Points:
+
+  - Arguments: Passed similar to how you pass arguments to a script. `$1`, `$2`, etc., represent the first, second, and so on arguments.
+  - Return Values/Exit Codes: Functions don't return values like in some other languages but you can use `return` to exit a function with a status code:
+  ```
+  my_function() {
+    if [ "$1" -gt 0 ]; then
+        return 0  # success
+    else
+        return 1  # failure
+    fi
+  }
+  ```
+  - Using Function Output: You can capture the output of a function using command substitution:
+  ```
+  my_function() {
+    echo "This is the result"
+  }
+
+  result=$(my_function)
+  echo "Result: $result"
+  ```
+  Functions are a powerful feature in Bash for structuring your scripts effectively!
+
+## Local Variables in Bash
+  In Bash, local variables are variables that are only accessible within the function they are defined in. This is useful for preventing variable name conflicts between different parts of your script.
+
+  Defining Local Variables
+
+  To declare a local variable inside a function, use the local keyword:
+  ```
+  my_function() {
+    local my_var="Hello, World!"
+    echo "$my_var"
+  }
+
+  my_function
+  # my_var is not accessible here
+  ```
+
+  Key Points:
+  - Scope: Local variables are only available within the function in which they are declared. Outside the function, they are not accessible.
+  - Default behavior: Without the `local` keyword, variables in Bash are global by default, meaning they can be accessed and modified outside the function.
+
+  Example:
+  ```
+  my_function() {
+    local name="John"
+    echo "Inside function: $name"
+  }
+
+  my_function
+  echo "Outside function: $name"  # Will not print anything because $name is local
+  ```
+  In this example, `name` is local to `my_function`, so it won't affect or be accessible outside the function.
+
+  Use Case:
+
+  Local variables are especially useful when writing larger scripts where multiple functions might use the same variable names. By declaring variables as local, you prevent unintended interference between different parts of your script.
+
+
 ## Basic Vim Commands
 - Opening a file:
   ```

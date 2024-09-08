@@ -784,6 +784,46 @@ This repository contains notes and example scripts based on what I learned from 
 
   Local variables are especially useful when writing larger scripts where multiple functions might use the same variable names. By declaring variables as local, you prevent unintended interference between different parts of your script.
 
+## AWK in Bash
+  `awk` is a powerful text processing tool in bash that's used to manipulate and analyze text files or streams. It allows for pattern matching and applying specific actions to lines in a file or input. Here’s a brief overview of its usage:
+
+  Basic Syntax
+
+  ```
+  awk 'pattern { action }' file
+  ```
+  - pattern: What to search for in each line (optional).
+  - action: What to do when the pattern is found (optional).
+  - file: The file to process.
+  
+  If no action is specified, `awk` prints the matching lines by default.
+
+  Common Examples
+  
+  1. Print entire file:
+  ```
+  awk '{ print }' filename
+  ```
+
+  2. Print specific columns (e.g. the second column):
+  ```
+  awk '{ print $2 }' filename
+  ```
+
+  3. Print lines that match a pattern:
+  ```
+  awk '/pattern/ { print }' filename
+  ```
+
+  4. Perform arithmetic operations:
+  ```
+  awk '{ print $1, $2, $1 + $2 }' filename
+  ```
+
+  5. Using field delimiters (e.g., comma-separated values):
+  ```
+  awk -F',' '{ print $1, $3 }' filename
+  ```
 
 ## Basic Vim Commands
 - Opening a file:

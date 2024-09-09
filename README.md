@@ -825,6 +825,83 @@ This repository contains notes and example scripts based on what I learned from 
   awk -F',' '{ print $1, $3 }' filename
   ```
 
+## SED in Bash
+  In Bash, `sed` (stream editor) is a powerful tool for text manipulation and transformation. It processes input line-by-line and allows for text substitution, deletion, insertion, and more.
+
+  Here are some common `sed` use cases:
+
+  1. Substitution
+  
+  To substitute text in a string or file:
+  ```
+  sed 's/old_text/new_text/' input_file
+  ```
+  - `s`: Substitute command.
+  - `old_text`: The text you want to replace.
+  - `new_text`: The text to replace it with.
+  - Example: Replace "hello" with "hi":
+  ```
+  echo "hello world" | sed 's/hello/hi/'
+  ```
+
+  2. Global Substitution
+  
+  To replace all occurrences of a word in a file:
+  ```
+  sed 's/old_text/new_text/g' input_file
+  ```
+  The `g` flag ensures all instances are replaced.
+
+  3. In-Place File Editing
+
+  To modify a file directly:
+  ```
+  sed -i 's/old_text/new_text/' file.txt
+  ```
+  The `-i` flag edits the file in place without creating a new file.
+
+  Create a backup file before editing a file:
+  ```
+  sed -i.ORIGINAL 's/old_text/new_text/g' file.txt
+  ```
+  `-i.ORIGINAL`: This flag tells `sed` to edit the file "in place," meaning it will modify `file.txt` directly. The `ORIGINAL` part specifies that before making the change, a backup copy of the file will be created with the extension `.ORIGINAL`.
+
+  For example, if the original file is `file.txt`, a backup named `file.txt.ORIGINAL` will be created, preserving the original content before any changes.
+
+
+
+  4. Delete Lines
+
+  To delete lines from a file:
+  ```
+  sed '5d' file.txt   # Deletes line 5
+  ```
+
+  Or delete lines matching a pattern:
+  ```
+  sed '/pattern/d' file.txt
+  ```
+
+  5. Insert or Append Lines
+
+  To insert a line before a matching pattern:
+  ```
+  sed '/pattern/i\New line of text' file.txt
+  ```
+
+  To append a line after a matching pattern:
+  ```
+  sed '/pattern/a\New line of text' file.txt
+  ```
+
+  6. Print Specific Lines
+
+  To print only a specific line or range of lines:
+  ```
+  sed -n '5p' file.txt   # Prints only line 5
+  sed -n '5,10p' file.txt   # Prints lines 5 to 10
+  ```
+
 ## Basic Vim Commands
 - Opening a file:
   ```

@@ -360,7 +360,7 @@ This repository contains notes and example scripts based on what I learned from 
 
   <ins>Modifying Variables</ins>
 
-  You can modify vairbales by reassigning values:
+  You can modify variables by reassigning values:
   ```
   AGE=25
   AGE=$((AGE + 1))

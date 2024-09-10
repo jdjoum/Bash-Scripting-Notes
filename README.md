@@ -2,7 +2,7 @@
 This repository contains notes and example scripts based on what I learned from the Free Code Camp [Bash Scripting Tutorial for Beginners](https://www.youtube.com/watch?v=tK9Oc6AEnR4&t). It covers essential Bash scripting concepts, commands, and practical examples.
 
 ## Table of Contents
-  1. [Basic Bash/Linux/Unix Commands](#basic-bash-linux-unix-commands)
+  1. [Basic Bash/Linux/Unix Commands](#basic-bashlinuxunix-commands)
   2. [Bash Variables](#bash-variables)
   3. [Bash Positional Arguments](#bash-positional-arguments)
   4. [Piping in Bash](#piping-in-bash)

@@ -1,6 +1,21 @@
 # Bash-Scripting-Notes
 This repository contains notes and example scripts based on what I learned from the Free Code Camp [Bash Scripting Tutorial for Beginners](https://www.youtube.com/watch?v=tK9Oc6AEnR4&t). It covers essential Bash scripting concepts, commands, and practical examples.
 
+## Table of Contents
+  1. [Basic Bash/Linux/Unix Commands](#basic-bash-linux-unix-commands)
+  2. [Bash Variables](#bash-variables)
+  3. [Bash Positional Arguments](#bash-positional-arguments)
+  4. [Piping in Bash](#piping-in-bash)
+  5. [Bash Output/Input Redirection](#bash-outputinput-redirection)
+  6. [Test Operators in Bash](#test-operators-in-bash)
+  7. [Conditionals in Bash](#conditionals-in-bash)
+  8. [Arrays and For Loops in Bash](#arrays-and-for-loops-in-bash)
+  9. [Functions in Bash](#functions-in-bash)
+  10. [Local Variables in Bash](#local-variables-in-bash)
+  11. [AWK in Bash](#awk-in-bash)
+  12. [SED in Bash](#sed-in-bash)
+  13. [Basic Vim Commands](#basic-vim-commands)
+
 ## Basic Bash/Linux/Unix Commands
 - `ls` - Lists directory contents
 - `cd` - Changes the current directory

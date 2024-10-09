@@ -20,6 +20,12 @@ This repository contains notes and example scripts based on what I learned from 
 - `ls` - Lists directory contents
 - `cd` - Changes the current directory
 - `pwd` - Prints the working directory
+- `~` - A shorthand for the home directory of the current user.
+
+  Examples:
+  - `cd ~`: Changes the directory to the user's home directory.
+  - `~/Documents`: Refers to the Documents folder inside the home directory.
+
 - `echo` - Displays text or the value of a variable in the terminal
 
   Examples:
